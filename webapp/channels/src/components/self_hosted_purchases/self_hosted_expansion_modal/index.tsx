@@ -168,7 +168,6 @@ export function canSubmit(formState: FormState, progress: ValueOf<typeof SelfHos
 }
 
 export default function SelfHostedExpansionModal() {
-    const selfHostedExpansionModal = useControlSelfHostedExpansionModal({});
     const dispatch = useDispatch<DispatchFunc>();
     const intl = useIntl();
     const cardRef = useRef<CardInputType | null>(null);
@@ -457,7 +456,7 @@ export default function SelfHostedExpansionModal() {
                                                 />
                                             </div>
                                             <Address
-                                                testPrefix='selfHostedExpansion'
+                                                testPrefix='shippingSelfHostedExpansion'
                                                 type='shipping'
                                                 country={formState.shippingCountry}
                                                 changeCountry={(option) => {
@@ -509,7 +508,7 @@ export default function SelfHostedExpansionModal() {
                         </div>
                         {((formState.succeeded || progress === SelfHostedSignupProgress.CREATED_LICENSE)) && !formState.error && !formState.submitting && (
                             <SuccessPage
-                                onClose={selfHostedExpansionModal.close}
+                                onClose={() => closeModal(ModalIdentifiers.SELF_HOSTED_EXPANSION}
                             />
                         )}
                         {formState.submitting && (
